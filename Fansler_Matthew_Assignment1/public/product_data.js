@@ -1,32 +1,33 @@
-products = 
+var products = 
 [
     {
-    "brand" : "Nike",
-    "price" : 100.00,
-    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
+    "Brand" : "Nike",
+    "Price" : 100.00,
+    "image" : "./images/Nike_blues.jpg"
     },
     {
-    "brand" : "Addidas",
-    "price" : 75.00,
-    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/iphone-3gs.jpg"
+    "Brand" : "Adidas",
+    "Price" : 75.00,
+    "image" : "./images/Adidas.jpg"
     },
     {
-    "brand" : "New Balance",
-    "price" : 50.00,
-    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Nokia.jpg"
+    "Brand" : "New Balance",
+    "Price" : 50.00,
+    "image" : "./images/New_Balance.jpg"
     },
     {
-    "brand" : "Converse",
-    "price" : 50.00,
-    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Samsung.jpg" 
+    "Brand" : "Converse",
+    "Price" : 50.00,
+    "image" : "./images/converse.jpg" 
     },
     {
-    "brand" : "Jordan",
-    "price" : 100.00,
-    "image" : "http://dport96.github.io/ITM352/morea/080.flow-control-II/Blackberry.jpg"
+    "Brand" : "Jordan",
+    "Price" : 100.00,
+    "image" : "./images/Jordans.jpg"
     }
 ];
 
 if(typeof module != 'undefined') {
-    module.exports.products = products;
+    module.exports.products = products; 
+    //Product rendering with order_page
 }
