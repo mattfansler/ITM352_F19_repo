@@ -1,0 +1,77 @@
+header{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* General */
+ html, body {
+  width: 100%;
+  margin: 0 auto;
+ }
+
+ table{
+   margin: 0 auto;
+ }
+
+ html {
+   font-family: 'Arial', sans-serif;
+   background-color: yellow;
+   font-size: 18px;
+ }
+ 
+  /* Typography, center heading */
+  
+  h1, h2 { 
+    text-align: center;
+  }
+  
+  /* block styling */
+  
+  div {
+    border: 5px solid black;
+    display: flex;
+    margin: 10 auto;
+    text-align: center;
+  }
+  
+  /*  Form styling */
+  
+  main {
+    color: black;
+    width: 600px; margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+    justify-content: space-around;
+    background: url() no-repeat 50% center;
+    background-size: 100%;
+  }
+  
+  /* Styling the image */
+  
+  img {
+    border: 1px black;
+    border-radius: 4px;
+    height: 600px;
+    padding: 5px;
+    width: 600px; 
+  }
+
+  center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
+  }
+
+  footer {
+    border-top: 0;
+    text-align: center;
+  }
+
+  #Policy {
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+  }

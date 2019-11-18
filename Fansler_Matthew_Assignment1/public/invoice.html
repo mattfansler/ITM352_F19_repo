@@ -1,0 +1,142 @@
+<html lang="en">
+<head>
+  <script>
+     // This file tmplate is refrenced on Matt's invoice1_1
+      // The calculations are correlated with the quantity and price from the order_page 
+        
+  </script>
+  <script src="product_data.js">
+  </script>
+  <script>
+      let params = (new URL(document.location)).searchParams; 
+      //Parses the name, purchase submit, and quantity to the URL
+      var quantities = []; //No submission is no form submitted 
+      if (params.has('purchase_submit')) { //Form submitted
+        for (i = 0; i < products.length; i++) {
+          if (params.has(`quantity${i}`)) {
+            a_qty = params.get(`quantity${i}`); 
+            //Retrieves quanitity of products selected
+            quantities[i] = a_qty; 
+          }
+        }
+      } else { 
+        document.write('no form submitted');
+      }
+      console.log(quantities); //Shows the quantities 
+    </script> 
+  </head>
+  </body> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  <link href="http://fonts.googleapis.com/css?family=Cherry+Swash|Raleway" rel="stylesheet"
+  <header> 
+    Vintage Shoeshop (Invoice)
+  </header>
+  <link rel="stylesheet" href= "product-style.css" <body>
+    <table border="2">
+      <tbody>
+        <script>
+          //Title and Table creation
+          </script>
+        <tr>
+            <th style="text-align: center;" width="43%">Shoes</th>
+            <th style="text-align: center;" width="11%">Quantity</th>
+            <th style="text-align: center;" width="13%">Price</th>
+            <th style="text-align: center;" width="54%">Extended price
+            </th>
+        </tr>
+        <script> 
+        subtotal = 0;
+        for (i = 0; i < products.length; i++) {
+          if (quantities[i] > 0)
+          {
+            extended_price = quantities[i] * products[i].Price
+            subtotal += extended_price;
+            document.write(`
+        <tr>
+        <td width="43%">${products[i].Shoes}</td>
+        <td align="center" width="11%">${quantities[i]}</td>
+        <td width="13%">\$${products[i].Price.toFixed(2)}</td>
+        <td width="54%">\$${extended_price.toFixed(2)}</td>
+        </tr>
+        `);
+          }
+        }
+        var tax_rate = 0.04;
+        var tax = tax_rate * subtotal;
+        if (subtotal <= 75) {
+          shipping = 4;
+        }
+        else if (subtotal <= 150) {
+          shipping = 8;
+        }
+        else {
+          shipping = 0.05 * subtotal; 
+        }
+        var total = subtotal + tax + shipping;
+
+      </script>
+      <tr>
+        <td colpan="4" width="100%"> &nbsp;</td>
+      </tr>
+      <tr>
+      <td style="text-align: center;" colspan="3" width="67%">Sub-total
+      </td>
+      <td width="54%">
+        $
+        <script>
+          document.write(subtotal.toFixed(2));
+        </script>
+      </td>
+    </tr>
+    <tr>
+        <td style="text-align: center;" colspan="3" width="67%">
+          <span>
+            Tax at
+            <script>
+            document.write(100 * tax_rate);
+            </script>
+            4%
+          </span>
+        </td>
+        <td width="54%">$
+              <script>
+                document.write(tax.toFixed(2));
+                </script>
+        </td>
+      </tr>
+      <tr>
+          <td style="text-align: center;" colspan="3" width="67%">Shipping</td>
+          <td width="54%">$
+            <script>
+            document.write(shipping.toFixed(2));
+            </script>
+          </td>
+        </tr>
+        <tr>
+            <td style="text-align: center;" colspan="3" width="67%">
+              <strong>
+                Total
+              </strong>
+            </td>
+            <td width="54%">
+              <strong>$
+                <script>document.write(total.toFixed(2));</script>
+              </strong>
+            </td> 
+          </tr>
+  </table>
+  <div id="Policy"> 
+      <br><b>
+        SHIPPING POLICY: Subtotals of $0 - $75.00 will be $4 shipping.
+        subtotals of $76 - $150 will be $8 shipping.
+        Subtotals over $150 will be charged 5% of the subtotal amount. 
+      </b> 
+    </div>
+    <h1>
+        Enjoy your vintage designers! Come again!!
+      </h1>
+  </body>
+</html>
