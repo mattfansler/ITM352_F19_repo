@@ -1,0 +1,52 @@
+<html lang="en"><head><script>
+        //Authors: Joshua Jerome and Matthew Fansler
+        //Description: HTML page that allows the user to input their data to become a registered user, coming from the Log in page
+        //Source: Based off Lab 14 hmtl form wise & Stack Exchange 
+        </script>
+        
+          <link href="services_style.css" rel="stylesheet">
+        <script>src="server.js"</script>
+        
+          </head><body><h1>Drunk Drive Registration</h1>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Registration form</title>
+        
+
+        <script>
+          //Confirms if password confirmation matched
+          //Will send alert to renter the passwords and the reesponse will be to send user back to registration page
+        function checkpassword() 
+        {var p=f.password.value;
+        var cp=f.repeat_password.value;
+        if(p==cp) {}
+        else
+        alert("Make sure passwords are correct!") 
+        response.redirect("registration.html?"); 
+        }
+        </script>
+        <script>
+        //Below contains the registration validations and guards that prevent error data from being inputted and meet the assignment's requirments
+        //Full Username: Only allows letters and 30 characters max
+        //Username: Has minimum of 4 characters, maximum 10, letters and numbers are only valid, case insensitive
+        //Email: x@y.z format and address contains only numbers, letters and _. in the beginning. The host machine can only contain numbers and letters and the domain name is 2 or 3 letters and case insensitive
+        //Password: Is a minimum of 6 characters, any characters are valid (Same requirements is applied to repeat password) 
+        </script>
+        
+        <div>
+        <form name="f" method="POST" action="" onsubmit="validatePassword()">
+        <input type="text" name="fullname" size="50" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="40" placeholder="Enter First &amp; Last Name" required="" title="Check spacing and only letters"><br> 
+        <input type="text" name="username" size="50" pattern=".[a-z0-9]{4,10}" required="" title="Either 4-10 Characters &amp; only numbers/letters" placeholder="Enter Username"><br>
+        <input type="email" name="email" size="50" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,3}$" required="" title="Error! Make sure your information follows the given conditions."><br>
+        <input type="password" id="Password" name="Password" size="50" pattern=".{6,}" required="" title="6 characters minimum" placeholder="Enter Password"><br>
+        <input type="password" id="Confirm_password" name="Confirm_password" size="50" pattern=".{8,}" required="" title="8 characters minimum" placeholder="Confirm Password"><br>
+        
+        <input type="submit" value="Submit" id="submit" onclick="checkpassword()">
+        </form></div>
+        <script>
+        
+        </script>
+        
+        </body>
+        </html>
