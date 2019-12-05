@@ -2,8 +2,9 @@
     <head>
         <script>
     //Authors: Joshua Jerome and Matthew Fansler
-    //Source: Html is based off of Lab14
-    //Description: Log in page for returning users. In addition, this page allows user to register if their are a new user.
+    //Source: Html is based off of Lab13 and parts of 14
+    //Description: Log in page for returning users. In addition, this page allows user to register if they are a new user.
+    //Below is refrenced off of the Assignment 1 order_page
     </script>
     
         <link href="services_style.css" rel="stylesheet">
@@ -11,31 +12,19 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Login</title>
-        <!--- <link href="login_style.css" rel="stylesheet"> --->
+        <title>Login</title> 
 
-        <script>
-            let params = (new URL(document.location)).searchParams;
-            if (params.has("LoginError")) {
-                window.onload = function () { //shows when the page loads
-                loginError = params.get("LoginError"); //get the login error and assign it into the variables
-                passSame = '<font color="red">Incorrect Password</font>'; //assigns same error message into a variable
-                notReg = params.get("LoginError"); //get the login error and assign it into variable
-                if(loginError == passSame) { //if the loginError equals the same error stored in the variable
-                    document.getElementById("passwordlabel").innerHTML=loginError; //sets inner html to display the login error
-                    loginError = ''; //resets login error to prevent the same error from showing up on page refresh
-                } 
-                if(loginError == notReg) { //if the loginError equals the same error stored in the variable
-                    document.getElementById("theusernamelabel").innerHTML=loginError; //sets inner html to display the login error
-                    loginError = ''; //resets login error to prevent the same error from showing up on page refresh
+        <script> //Query string is based off of Lab13
+                let params = (new URL(document.location)).searchParams; 
+                //Params becomes a variable 
+                //Refrenced from Assignment1_Design_Examples
+                window.onload = function () { //Using Window.onload checks valid quantities in the textbox
+                    if (params.has('LogError')) { //Checks if an error exists to server if Param registration data is incorrect
+                        login['username'].value = params.get('username'); //Query string values appear for username box
+                        login['password'].value = params.get('password'); //Query string values appear for password box
+                        alert('Invalid Username or Password'); //Indicates errors present in form by sending a message
+                    }
                 }
-                if (params.has("logStickInput")){ //if has user input from query
-                    stickTheInput = params.get("logStickInput"); //get the info and assign into the variable
-                    document.getElementById("userBox").value=stickTheInput; //sets the value of the input box to equal what was entered from the user
-                    loginError = ''; //resets login error to preventn the same error from showing up on each page
-                }
-            } 
-        } 
         </script>
     
     </head>
@@ -44,23 +33,27 @@
     
     <h2>Login below to begin!!</h2>
     
-        <form name="loginForm" method="POST"> 
+    
+        <form name="loginForm" method="POST" action="./login.html"> 
             <div>
-            <input type="text" name="username" size="40" placeholder="enter username"><br> 
-            <input type="password" name="password" size="40" placeholder="enter password"><br>
+            <input type="text" name="username" size="40" placeholder="Enter username"><br> 
+            <input type="password" name="password" size="40" placeholder="Enter password"><br>
             <input type="submit" value="login" id="submit">  </div>
             </form>  
     
     
     <h2>Need a ride in the future? New users register below!</h2>
-    <a id="registrationpage" href="registration.html"><button type="button">Register here</button></a>
     <div>
     </div>
     <script>
-        //Connects the quantity data to pass on to following page
-    registrationpage.href = "registration.html" + document.location.search;
-    login_form.action = "./login" + document.location.search;
+    login.action = "./login.html" + document.location.search;
     </script>
+    <br>
+    <input 
+    type="button" 
+    name="newuser" 
+    value="Register" 
+    onclick="window.location='./registration.html' + document.location.search;">
 
     </body>
 </html>

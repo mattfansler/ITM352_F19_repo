@@ -1,52 +1,71 @@
-<html lang="en"><head><script>
-        //Authors: Joshua Jerome and Matthew Fansler
-        //Description: HTML page that allows the user to input their data to become a registered user, coming from the Log in page
-        //Source: Based off Lab 14 hmtl form wise & Stack Exchange 
-        </script>
-        
-          <link href="services_style.css" rel="stylesheet">
-        <script>src="server.js"</script>
-        
-          </head><body><h1>Don't Drink and Drive Registration</h1>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Registration form</title>
-        
+<script>
+    //Authors: Joshua Jerome and Matthew Fansler
+    //Source: Lab 13, htmldoctor.com, W3schools.com
+    //Below is the Registration form, which connects to the invoice from the log in page
+</script>
+<!DOCTYPE html>
+<html lang="en">
 
-        <script>
-          //Confirms if password confirmation matched
-          //Will send alert to renter the passwords and the reesponse will be to send user back to registration page
-        function checkpassword() 
-        {var p=f.password.value;
-        var cp=f.repeat_password.value;
-        if(p==cp) {}
-        else
-        alert("Make sure passwords are correct!") 
-        response.redirect("registration.html?"); 
+<head>
+    <script> //Sourced from Lab13 order_page and Assignment1_DesignExamples
+        let params = (new URL(document.location)).searchParams; 
+        //Using Params to get the URL
+        //Refrenced from Assignment1_Design_Examples, server.js
+        window.onload = function () {  //Using Window.onload checks valid quantities in the textbox and if quantities exist
+            if (params.has('errors')) { //Check if an error is redirecting the server 
+                // If Pramas registration data is incorrect then textboxes will contain starting data
+                Register['name'].value = params.get('name'); //Query string values = boxes
+                Register['username'].value = params.get('username');
+                Register['password'].value = params.get('password');
+                Register['pswd'].value = params.get('pswd'); 
+                Register['email'].value = params.get('email');
+                alert('Fix the following errors: \n' + params.get('errors')); //If a registration error exists, an alert will send
+            }
         }
-        </script>
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="services_style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div> 
+        <!--- Refrenced from http://html5doctor.com/html5-forms-input-types/ & https://www.w3schools.com/howto/howto_css_login_form.asp --->
+        <form name="register" method="POST">
+            Registration Page <br> <br>
+            <div class="container">
+                <label for="name"><b>Name</b></label>
+                <input type="text" name="name" maxlength="30" onkeyup="" required><br>
+    
+                <br>
+                <label for="username"><b>Username</b></label>
+                <input type="text" id="username" name="username" onkeyup="" minlength="4" maxlength="10" required>
+
+                <br>
+                <label for="email"><b>Email Address</b></label>
+                <input type="email" id="email" name="email" onkeyup="emaillowercase()" required><br>
+    
+                <br>
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" onkeyup="" minlength="6" required><br>
+    
+                <br>
+                <label for="pswd"><b>Confirm Password</b></label>
+                <input type="password" name="pswd" onkeyup="" required><br>
+    
+                <br>
+                <input type="submit" name="submit" value="Register">
+            </div>
+        </form>
         <script>
-        //Below contains the registration validations and guards that prevent error data from being inputted and meet the assignment's requirments
-        //Full Username: Only allows letters and 30 characters max
-        //Username: Has minimum of 4 characters, maximum 10, letters and numbers are only valid, case insensitive
-        //Email: x@y.z format and address contains only numbers, letters and _. in the beginning. The host machine can only contain numbers and letters and the domain name is 2 or 3 letters and case insensitive
-        //Password: Is a minimum of 6 characters, any characters are valid (Same requirements is applied to repeat password) 
+            Register.action = "./public/registration.html" + document.location.search;
         </script>
-        
-        <div>
-        <form name="f" method="POST" action="" onsubmit="validatePassword()">
-        <input type="text" name="fullname" size="50" pattern="[a-zA-Z]+[ ]+[a-zA-Z]+" maxlength="40" placeholder="Enter First &amp; Last Name" required="" title="Check spacing and only letters"><br> 
-        <input type="text" name="username" size="50" pattern=".[a-z0-9]{4,10}" required="" title="Either 4-10 Characters &amp; only numbers/letters" placeholder="Enter Username"><br>
-        <input type="email" name="email" size="50" placeholder="Enter Email" pattern="[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,3}$" required="" title="Error! Make sure your information follows the given conditions."><br>
-        <input type="password" id="Password" name="Password" size="50" pattern=".{6,}" required="" title="6 characters minimum" placeholder="Enter Password"><br>
-        <input type="password" id="Confirm_password" name="Confirm_password" size="50" pattern=".{8,}" required="" title="8 characters minimum" placeholder="Confirm Password"><br>
-        
-        <input type="submit" value="Submit" id="submit" onclick="checkpassword()">
-        </form></div>
-        <script>
-        
-        </script>
-        
-        </body>
-        </html>
+        </table>
+    </div>
+</body>
+
+</html>
