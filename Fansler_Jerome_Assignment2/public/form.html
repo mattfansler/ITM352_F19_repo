@@ -2,60 +2,50 @@
 <html lang="en">
 
 <head>
-    <script src="./service_data.js"> //uses get request
+    <script src="./service_data.js"> //Get Request
+    //Author: Joshua Jerome and Matthew Fansler
+    //Source: Assignment 1_Designexamples, Assignment 1 order page, Lab 13, Lab14
+    //Below is the order form page. The following conatians validation functions refrenced from Assignment 1_Designexamples to display products, prices, and quantities
     </script>
     <script>
-        // get the query string values from form submission (Lab13 order_page)
-        // From Assignment1_DesignExamples Asssignment1_2file products_display.html
-        let params = (new URL(document.location)).searchParams; //params is a variable, 
-
-        // Creating function window.onload so when the page is loading, it checks to make sure there is a quantity written and that the quantities in textbox are valid
-        //From Assignment1_Design_Examples > Asssignment1_2file > store_server.js 
-
-        window.onload = function () { // creating the function for window.onload
-            //Check if we're getting redirected from the server because of an error
-            if (params.has('hasValidQuantities')) { //if params has a valid quantity
-                //if there is a quantity error, put up an alert
-                if (params.get('hasValidQuantities') == 'false') { //if there is an invalid quantity
+        let params = (new URL(document.location)).searchParams; //Using params we get the query string which contains form data
+        // Checks if quantitys in textbox exist and if they are valid then redirected to invoice
+        window.onload = function () { //Check if an error is causing the server to redirect
+            if (params.has('hasValidQuantities')) { //Check params valid quantity
+                if (params.get('hasValidQuantities') == 'false') { //Check for an invalid quantity
                     alert('Please enter valid quantities.'); //if there is an invalid quantity error, put up an alert to enter a valid number
                 }
                 if (params.get('hasPurchases') == 'false') {    // if there are no quantities listed
-                    alert('Please select quantities to purchase.'); // if there is no quantities listed, put up alert to choose quantities
+                    alert('Please select quantities to purchase.'); // Sends alert to user if no quanities are entered 
                 }
             }
-
-
-            // Put the original data back into the textboxes
-            for (i = 0; i < services.length; i++) { // for every service
-                if (params.has(`qtyTextbox${i}`)) { // if there is something in the textbox
-                    aqty = params.get(`qtyTextbox${i}`); // have aqty equal to the value from the textbox
-                    // make textboxes sticky in case of invalid data
-                    quantity_form[`qtyTextbox${i}`].value = aqty; // have the value from the textbox in the form for given service equal to aqty
-                    if (!isNonNegInt(aqty)) { // if aqty is not an integer
-                        checkQuantityTextbox(quantity_form[`qtyTextbox${i}`]); // show where the error is
+            for (i = 0; i < services.length; i++) { // Function to check for valid sticky quantities
+                if (params.has(`qtyTextbox${i}`)) { // Checks if there is a quantity in textbox
+                    aqty = params.get(`qtyTextbox${i}`); //Function to make textboxes sitcky incase of invalid data
+                    quantity_form[`qtyTextbox${i}`].value = aqty; //Totals the entire quantity
+                    if (!isNonNegInt(aqty)) { //Check if it is a invalid quantity
+                        checkQuantityTextbox(quantity_form[`qtyTextbox${i}`]); // Shows the error location
                     }
                 }
             }
         }
-
-        //Checking quantity in the textbox (from Assignment1_Design_Examples 1_2 display)
+        //Below checks the textboxes using the isNonNegInt function and sends back an error message if is is invalid
         function checkQuantityTextbox(theTextbox) {
-            errs = isNonNegInt(theTextbox.value, true); // err = value of whatever in textbox as long as integer
+            errs = isNonNegInt(theTextbox.value, true); 
             if (errs.length == 0) errs = ['You want:'];
             if (theTextbox.value.trim() == '') errs = ['Quantity'];
-            document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", ");
+            document.getElementById(theTextbox.name + '_label').innerHTML = errs.join(", "); //Get parameters from query string
 
         }
-        //Creating the isNonNegInt function, which checks to make sure the quantity is a positive integer 
-        //From Lab 12 and 13
-        function isNonNegInt(q, returnErrors = false) { //Creating function isNonNegInt
-            errors = []; // assume no errors at first
-            if (Number(q) != q) errors.push('Not a number'); // Check if string is a number value
-            if (q < 0) errors.push('Negative value'); // Check if it is non-negative
-            if (parseInt(q) != q) errors.push('Not an integer'); // Check that it is an integer
-            return returnErrors ? errors : (errors.length == 0); //return no errors if the errors length is 0
+        //Below checks the textboxes using the isNonNegInt function to make sure they are positive integer, refrenced from Lab 13 and 14
+        function isNonNegInt(q, returnErrors = false) { 
+            errors = []; 
+            // Assume no errors at start
+            if (Number(q) != q) errors.push('Not a number'); // Check for number value
+            if (q < 0) errors.push('Negative value'); // Check for non-negative 
+            if (parseInt(q) != q) errors.push('Not an integer'); // Check for integer
+            return returnErrors ? errors : (errors.length == 0); //If errors length is zero then return no errors
         }
-
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,7 +58,8 @@
 </header>
 <div>
     <main>
-        <link rel="stylesheet" href="form-style.css">
+        <link rel="stylesheet" href="form-style.css"> 
+        <!-- Design of the order form page using the CSS-->
 
         <body>
             <form name="quantity_form" action="/purchase" method="GET">
@@ -80,9 +71,8 @@
                         <th>Quantity</th>
                     </tr>
                     <script>
-                        //For every product in the array, write the product number, display its image and name, and list price
+                        //Displays the image, name, price, and item number in the array 
                         for (i = 0; i < services.length; i++) {
-                            /*for every product in the product_data, display the item number, image, type, and price for each product in the table*/
                             document.write(`
                 <tr>
                    <td>${i + 1}</td>

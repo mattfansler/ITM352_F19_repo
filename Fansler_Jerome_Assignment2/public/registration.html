@@ -28,7 +28,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="services_style.css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.gis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -42,25 +42,19 @@
             Registration Page <br> <br>
             <div class="container">
                 <label for="name"><b>Name</b></label>
-                <input type="text" name="name" maxlength="30" onkeyup="" required><br>
-                <label for="namelabel" id="namelabel">Please enter a name</label>
+                <input type="text" name="name" maxlength="30" onkeyup="" required>
                 <br>
                 <label for="username"><b>Username</b></label>
                 <input type="text" id="username" name="username" onkeyup="" minlength="4" maxlength="10" required>
                 <br>
-                <label for="userlabel" id="userlabel">Please enter a username</label>
-                <br>
                 <label for="password"><b>Password</b></label>
-                <input type="password" name="password" onkeyup="" minlength="6" required><br>
-                <label for="pswdlabel" id="pswdlabel">Please enter a password</label>
+                <input type="password" name="password" onkeyup="" minlength="6" required>
                 <br>
                 <label for="pswd"><b>Confirm Password</b></label>
-                <input type="password" name="pswd" onkeyup="" required><br>
-                <label for="pswdlabel" id="pswdlabel">Please type your password again</label>
+                <input type="password" name="pswd" onkeyup="" required>
                 <br>
                 <label for="email"><b>Email Address</b></label>
                 <input type="email" id="email" name="email" onkeyup="emaillowercase()" required><br>
-                <label for="emaillabel" id="emaillabel">Please enter a email</label>
                 <br>
                 <input type="submit" name="submit" value="Register" onclick="checkpassword()">
             </div>
