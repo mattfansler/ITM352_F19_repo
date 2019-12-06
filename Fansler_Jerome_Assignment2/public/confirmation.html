@@ -1,13 +1,15 @@
-<script src="./service_data.js"> //uses get request from ./service_data.js
+<script src="./service_data.js"> //Uses GET request from ./service_data.js
+//Author: Joshua Jerome and Matthew Fansler
+//Source: Assignment 1_Designexamples, Invoice1_1, SmartPhoneproducts 2 & 3
+//Below is the confirmation page. It was appear after the user has completed purchase on invoice.
 </script>
 
 
 <script>
-    // get the query string values from form post
-    let params = (new URL(document.location)).searchParams; // searching for the parameters in a new URL document location
+    // Query string values from form post
+    let params = (new URL(document.location)).searchParams; // Searches for parameters in new URL document
     GET = {}; //GET is an empty object
-    params.forEach(function (value, key) { GET[key] = value }); // the value is equal to the object of GET
-
+    params.forEach(function (value, key) { GET[key] = value }); // Equal to the object of GET
 </script>
 
 <!DOCTYPE html>
@@ -17,8 +19,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <title>Confirmation</title>
 </head>
 
 <body>
@@ -38,28 +39,19 @@
 
 </html>
 <style>
-    /*Setting css for confirmation page*/
-    /*css based on SmartphoneProducts2/SmartphoneProducts3*/
-
-    /* setting dimensions for the image*/
+    /*Css for confirmation page*/
+    /*Css based on SmartphoneProducts2/SmartphoneProducts3*/
     img {
         height: 400;
-        /*height is 400px*/
         width: 200px;
-        /*width is 200px*/
     }
-
-    /*setting the style for the body of the page (alignment and color)*/
-    /* Font from BrowserHistory2*/
-
+    /*Below is style for the body*/
     body {
         font-family: 'Open Sans', sans-serif;
         text-align: center;
         align-content: center;
-        color: ivory;
-        background-color: tan;
+        color: white;
+        background-color: peachpuff;
         background: url(./images/background.jpg);
     }
-
-    /* some of body content from BrowserHistory2*/
 </style>

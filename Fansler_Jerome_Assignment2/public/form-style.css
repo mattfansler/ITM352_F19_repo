@@ -1,31 +1,22 @@
 /*Authors: Joshua Jerome and Matthew Fansler*/
-/*Below is the css for the order form and service page htmls*/
-/*css based on SmartphoneProducts2/SmartphoneProducts3*/
-/* Image Specifications */ 
+/*Below is the css for the order form, and invoice htmls*/
+/*Css based on SmartphoneProducts2 & 3*/
 
 img{
-    height:200px; /*height for all images is 200px*/
-    width:200px; /*width for all images is 200px*/
+    height:300px; 
+    width:300px; 
 }
-
-/* Styling the services display */
 main{
-    display: flex; /*set flex container on items, how item will grow/shrink in container*/
-    flex-flow: row wrap; /*will wrap items in a row*/
-    justify-content: space-around; /*browser distributes items so space around objects are even */
-    color: ivory; /*color of text is ivory*/
+    display: flex; 
+    flex-flow: row wrap; 
+    justify-content: space-around; 
+    color: white; 
 }
-
-/*Setting css for the body*/
-/* Font from BrowserHistory2*/
 body{
     background: url(./images/background.jpg); /*Background image is from the ./public/images folder*/
     font-family:'Open Sans',sans-serif; /*font is Open-Sans*/
 }
-
-/* Typography */
-
-h1,h2{ /*For text in the <h1> and <h2> headers*/
-    color: ivory; /*text color is ivory*/
-    text-align: center /*align text to center*/
+h1,h2{ 
+    color: white; 
+    text-align: center
 }
