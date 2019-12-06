@@ -34,7 +34,10 @@
 <body>
     <div>
         <!-- Refrenced from http://html5doctor.com/html5-forms-input-types/ & https://www.w3schools.com/howto/howto_css_login_form.asp --->
-        <!-- Below is Registration form, after being passed through by the log in-->
+        <!-- Below is Registration form and the requirements for entering password, username, and email, after being passed through by the log in-->
+        <script>
+            //The following form cointains gaurds and registration validations that prevent error data
+        </script>
         <form name="register" method="POST" action='register'>
             Registration Page <br> <br>
             <div class="container">
@@ -59,7 +62,7 @@
                 <input type="email" id="email" name="email" onkeyup="emaillowercase()" required><br>
                 <label for="emaillabel" id="emaillabel">Please enter a email</label>
                 <br>
-                <input type="submit" name="submit" value="Register">
+                <input type="submit" name="submit" value="Register" onclick="checkpassword()">
             </div>
         </form>
         <script>
