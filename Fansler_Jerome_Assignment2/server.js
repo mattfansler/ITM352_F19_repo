@@ -12,7 +12,6 @@ var filename = "user_data.json"; //location of user reg data
 app.use(myParser.urlencoded({ extended: true })); //use myParser
 
 
-
 // Only open the file if it exists Lab 14
 if (fs.existsSync(filename)) {
     fstats = fs.statSync(filename);
