@@ -6,9 +6,9 @@ var fs = require('fs'); //require a file system from node
 var myParser = require("body-parser"); //needed to make form data to be available in request.body
 //var services = require('./public/service_data.js'); // location of services
 const services = require('./public/service_data.js'); //keep service_data constant
-var filename = "user_data.json"; //location of user reg data
+var filename = 'user_data.json'; //location of user reg data
 //var user_quantity_data; // hold quantity variables until invoice is displayed
-
+let users_reg_data;
 app.use(myParser.urlencoded({ extended: true })); //use myParser
 
 
@@ -172,6 +172,19 @@ app.post("/register", function (request, response) {
     if (errors.length == 0) {
         console.log('Error Free');
         request.query.username = regUser;
+        const { name, password, email, username } = request.body;
+
+        users_reg_data[username] = {
+            name,
+            password,
+            email
+        }
+
+        // console.log('adding user: ')
+        // console.log(users_reg_data[username]); 
+
+        fs.writeFileSync('./user_data.json', JSON.stringify(users_reg_data));
+
         response.redirect('./invoice.html?' + qs.stringify(request.query))
     }
     if (errors.length > 0) {
