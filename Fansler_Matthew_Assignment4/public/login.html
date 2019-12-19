@@ -1,0 +1,39 @@
+<html lang="en">
+    <head>
+        <script>
+    //Authors: Matthew Fansler
+    //Source: Html is based off of Assignment1 order_page and Lab14
+    //Description: Log in page for returning users. In addition, this page allows user to register if their are a new user.
+    </script>
+    
+        <link href="products_style.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Login</title>
+        <!--- <link href="login_style.css" rel="stylesheet"> --->
+    
+    </head>
+    
+    <body><h1>Login/Register</h1>
+    
+    <h2>Members login below!</h2>
+     <!-- Log in button below, connects the log in through POST on server-->
+        <form name="loginForm" method="POST"> 
+            <div>
+            <input type="text" name="username" size="40" placeholder="enter username"><br> 
+            <input type="password" name="password" size="40" placeholder="enter password"><br>
+            <input type="submit" value="login" id="submit">  </div>
+            </form>  
+    
+    
+    <h2>New to P L U G 808? Register below!</h2>
+    <!-- Registration button below, connects the log in to the registration for user-->
+    <div>
+        <form action="/registration.html">
+        <input type="submit" value="Register Here" id="regpage" name="register_here"> 
+        </form>
+    </div>
+
+    </body>
+</html>
