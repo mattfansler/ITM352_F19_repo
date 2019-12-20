@@ -1,0 +1,98 @@
+/*Authors: Matthew Fansler*/
+/*Description: Below is the CSS for product description page, about page, login, and registration htmls*/
+/*Source: css based on SmartphoneProducts2 & 3, Assignment 2*/
+/*Date: 12/10/19*/
+
+/*body*/
+body {
+  width: 880px;
+  margin: 0 auto;
+  color: whitesmoke;
+  
+}
+
+body {
+  font-size: large;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  background-image: url(./images/bottles3.jpg);
+  background-size:cover;
+  text-decoration-color: white;
+}
+/*Navigation bar*/
+
+.nav ul {
+  margin: 0;
+}
+
+.nav li {
+  display: inline;
+  font-size: 25px;
+}
+
+.nav a {
+  display: inline-block;
+  padding: .5em;
+  color: white;
+  text-decoration: none;
+}
+
+/*titles*/
+.title-name {
+  text-align: center;
+  margin: 0;
+  font-size: 4em;
+  font-family: "Metal Mania";;
+  font-weight: normal;
+  color: white;
+}
+
+/*main*/
+
+.main-nav {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: lighter;
+  border-bottom: 1px solid white
+}
+
+.main-nav li {
+padding: 0 5%;
+}
+
+.nav a:hover {
+background-color: rgba(0, 0, 0, 0.3);
+}
+
+.main-header {
+background-image: url("images/party.gif");
+background-blend-mode: multiply;
+background-size: cover;
+padding-bottom: 20px;
+}
+
+/*h1,h2*/
+h1,h2 {
+  font-style: italic ;
+  text-align: center;
+  color: whitesmoke(0, 47, 255);
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 100px;
+}
+
+/*table*/
+table {
+ border: 10px;
+ border-color: black; 
+align-items: center;
+color: black;
+}
+
+

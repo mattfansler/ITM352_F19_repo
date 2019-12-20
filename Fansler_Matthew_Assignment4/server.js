@@ -2,7 +2,7 @@
 Author: Matthew Fansler
 File Description: server processing
 */
-//Source from Lab 13, 14, Assignment2 and Port's office hours
+//Source from Lab 13, 14, 15, Assignment2 and Port's office hours
 const qs = require('querystring'); //use querystring
 //const querystring = require('./public/product_data.js')
 var express = require('express'); //Use express module
@@ -10,11 +10,14 @@ var app = express(); // Create an object with express
 var fs = require('fs'); //require a file system from node
 var myParser = require("body-parser"); //needed to make form data to be available in request.body
 //var products = require('./public/product_data.js'); // location of products
+var cookieParser = require('cookie-parser'); //Uses cookies wihtin function
+
 const products = require('./public/product_data.js'); //keep product_data constant
 var filename = 'user_data.json'; //location of user reg data
 //var user_quantity_data; // hold quantity variables until invoice is displayed
 let users_reg_data;
 app.use(myParser.urlencoded({ extended: true })); //use myParser
+app.use(cookieParser()); //Use cookieparser
 
 
 // Only open the file if it exists Lab 14
@@ -39,28 +42,33 @@ app.post("/login.html", function (request, response) { //Lab14
         if (users_reg_data[newUsername].password == request.body.password) {  //does password match username?
             request.query.username = newUsername;
             console.log(request.query.name);
+            response.cookie('user', request.query.username); //Responds with cookie once user enters username on browser
             response.redirect('/invoice.html?' + qs.stringify(request.query)); //send query to invoice
             return;
         } else {
-            errors.push = ('Invalid Password');
+            errors.push = ('Invalid Password'); //Checks for invalid password
             console.log(errors);
             request.query.username = newUsername
             request.query.password = request.body.password;
             request.query.errors.join(';');
         }
     } else {
-        errors.push = ('Invalid Username');
+        errors.push = ('Invalid Username'); //Checks for invalid username
         console.log(errors);
         request.query.username = newUsername;
         request.query.password = request.body.password;
         request.query.errors = errors.join(';');
     }
-    response.redirect('./public/login.html?' + qs.stringify(request.query));
+    response.redirect('./public/login.html?' + qs.stringify(request.query)); //Redirects to login
 }
 );
+
 app.get('/purchase', function (request, response, _next) { //get data from /purchase action
     console.log(Date.now() + ' raw_data ' + JSON.stringify(request.query)); //log date and quantites 
-
+    if (request.cookies.user) { //Grabs reuqest from cookie 
+        request.query.username = request.cookies.user; //Uses username to keep user logged in by username
+        response.redirect('./invoice.html?' + qs.stringify(request.query)); // redirect to the form again, keeping the query that they wrote
+    }
     let grab = request.query; //grab request from query
     console.log(grab); //grab query from the form 
     var validQuantities = true; //textboxes are blank to start, nothing is invalid
@@ -93,6 +101,7 @@ app.get('/purchase', function (request, response, _next) { //get data from /purc
     
     qString = qs.stringify(a_qty); //string query together
     if (validQuantities == true && validPurchases == true) { //if both are true
+        response.cookie('cart', qs.stringify(request.query)); //send cookie to cart, keeping the query
         response.redirect('login.html?' + qs.stringify(request.query)); //send to login with the form data 
     } else { //if either is false
         request.query["validQuantities"] = validQuantities; // request the query for validQuantities
@@ -116,6 +125,18 @@ app.get('/purchase', function (request, response, _next) { //get data from /purc
     response.send(str);
 });
 */
+
+app.post('/logout', function (request, response) { //Logout button
+    console.log('logout');
+    response.clearCookie('user'); //Clears the username cookie with logout
+    response.clearCookie('cart'); //Clears the cart cookie with logout
+    response.redirect('./index.html');
+});
+
+app.post('/registration', function (request, response) {
+    console.log(request.query);
+    response.redirect('./registration.html?' + qs.stringify(request.query))
+});
 
 
 app.post("/register", function (request, response) {
@@ -190,7 +211,10 @@ app.post("/register", function (request, response) {
 
         fs.writeFileSync('./user_data.json', JSON.stringify(users_reg_data));
 
-        response.redirect('./invoice.html?' + qs.stringify(request.query))
+        var cart = qs.parse(request.cookies.cart); //Holds cookies in cart by using parse request
+        cart.username = username; //Adds cart to username
+
+        response.redirect('./invoice.html?' + qs.stringify(cart)) //Redirects invoice to cart
     }
     if (errors.length > 0) {
         console.log(errors)

@@ -1,0 +1,94 @@
+<script>
+    //Authors: Matthew Fansler
+    //Source: Lab 13, Assignment1, htmldoctor.com, W3schools.com
+    //Description: Below is the Registration form, which connects to the invoice from the log in page
+</script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="./product_data.js"> //uses get request
+    </script>
+    <script>
+
+        function checkQuantityTextbox() {
+            errs_array = isNonNegInt(qtyTextbox.value, true);
+            qty_textbox_message.innerHTML = errs_array.join(',');
+        }
+        function isNonNegInt(q, sendArrayBack = false) {
+            errors = []; // assume no errors at first
+            if (Number(q) != q) errors.push('Not a number!'); // Check if string is a number value
+            if (q < 0) errors.push('Negative value!'); // Check if it is non-negative
+            if (parseInt(q) != q) errors.push('Not an integer!'); // Check that it is an integer
+            return sendArrayBack ? errors : (errors.length == 0);
+        }
+        function displayPurchase() {
+            if (isNonNegInt(quantity_form.qtyTextbox.value)) {
+                document.write(`Thank you for ordering ${quantity_form.qtyTextbox.value} things!`);
+            } else {
+                alert('Please enter a valid quantity')
+            }
+
+        }
+
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"rel="stylesheet"> 
+    <link rel="stylesheet" href="products_style.css">
+</head>
+<header class="main-header">
+        <nav class="main-nav nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="product_page.html">Product Descriptions</a></li>
+                <li><a href="form.html">Shop</a></li>
+                
+            </ul>
+        </nav>
+        <h1 class="title-name">P L U G 808</h1>
+    </header>
+<div><main>
+<body>
+    <form name="quantity_form" action="/form.html" method="GET">
+        <table cellpadding="10" border="1" bgcolor="#D2B48C">
+            <tr>
+                <th>Item #</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+            <script>
+//For every product in the array, write the product number, display its image and name, and list price
+                
+                for (i = 0; i < products.length; i++) { 
+                /*for every product in the product_data, display the item number, image, type, and price for each product in the table*/
+                    document.write(`
+                <tr>
+                   <td>${i + 1}</td>
+                    <td><img src = "./images/${products[i].image}"><br>${products[i].product}</td>
+                    <td>\$${products[i].price}</td>
+                    <td>${products[i].description}</td>
+                    <td>${products[i].description2}</td>
+    </tr>
+    `);
+    
+                }
+            </script>
+
+        </table>
+        <input type="submit" value="Purchase">
+
+    </form>
+</main></div>
+</body>
+<br>
+<footer>
+ <h1>Delivered right to Your Doorstep</h1>
+</footer>
+</html>

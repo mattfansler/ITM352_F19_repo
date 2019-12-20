@@ -1,0 +1,46 @@
+<!--Author: Matthew Fansler-->
+<!--Description: Home, index-->
+<!--Source: W3, Assignment1-->
+<!--Date: 12/11/19-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="This is the description">
+    <link rel="stylesheet" href="form-style.css" />
+    <title>Plug808</title>
+    <h1>P L U G 808</h1>
+    <h2>Get it delivered right to your doorstep!</h2>
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>  <!--Header for navigation of website-->
+        <header class="main-header">
+            <nav class="nav main-nav">
+                <ul> 
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="product_page.html">Product Descriptions</a></li>
+                    <li><a href="form.html">Shop</a></li>
+                     <!--Logout form using POST-->
+                    <form name="logoutForm" action="logout" method="POST"> 
+                        <div>
+                        <input type="submit" value="logout" id="submit">  </div>
+                    </form>  
+                </ul>
+            </nav>
+            <!--Sets gif as the back ground center and loops it-->
+            <video autoplay loop poster="images/home.gif">
+                <source src="./images/home.gif" type="video/mp4">
+            </video>
+    </a>
+</body>
+</html>
